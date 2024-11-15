@@ -32,8 +32,8 @@ export default () => {
       md:px-8">
         <div className="flex items-center justify-between py-5 md:block">
           <a 
-          href="javascript:void(0)"
-          // onClick={(e) => e.preventDefault()}
+          href="#" 
+          onClick={(e) => e.preventDefault()}
           >
             <img
               src="https://www.floatui.com/logo.svg"

@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default ({
   setOpenProfile,
-  setCompleteModal,
+  setCompleteModel,
   setGetModel,
-  setStartModal,
+  setStartModel,
 }) => {
   const team = [
     {
@@ -30,11 +30,11 @@ export default ({
 
   const openModelBox = (text) => {
     if (text === 1) {
-      setCompleteModal(true);
+      setCompleteModel(true);
     } else if (text === 2) {
       setGetModel(true);
     } else if (text === 3) {
-      setStartModal(true);
+      setStartModel(true);
     } else if (text === 4) {
       setOpenProfile(true);
     }
@@ -48,7 +48,7 @@ export default ({
             {team.map((item, i) => (
               <li key={i}>
                 <div
-                  onClick={() => openModelBox(i + 1)}
+                  onClick={() => openModelBox(i+1)}
                   className="w-full h-60 sm:h-52 md:h-56"
                 >
                   <Image

@@ -27,7 +27,7 @@ const index = () => {
   const [createShipmentModel, setCreateShipmentModel] = useState(false);
   const [openProfile, setOpenprofile] = useState(false);
   const [startModel, setStartModel] = useState(false);
-  const [completeModal, setCompleteModal] = useState(false);
+  const [completeModel, setCompleteModel] = useState(false);
   const [getModel, setGetModel] = useState(false);
   //DATA STATE VARIABLE
   const [allShipmentsdata, setallShipmentsdata] = useState();
@@ -43,7 +43,7 @@ const index = () => {
     <>
       <Services
         setOpenprofile = {setOpenprofile}
-        setCompleteModal = {setCompleteModal}
+        setCompleteModel = {setCompleteModel}
         setGetModel={setGetModel}
         setStartModel={setStartModel}
         />
@@ -63,8 +63,8 @@ const index = () => {
           getShipmentsCount={getShipmentsCount}
         />
         <CompleteShipment
-          completeModal={completeModal}
-          setCompleteModal={setCompleteModal}
+          completeModel={completeModel}
+          setCompleteModel={setCompleteModel}
           completeShipment={completeShipment}
         />
         <GetShipment
