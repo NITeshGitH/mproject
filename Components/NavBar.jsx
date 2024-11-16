@@ -2,6 +2,8 @@ import { useEffect, useState, useContext } from "react";
 
 import { TrackingContext } from "../Conetxt/Tracking";
 import { Nav1, Nav2, Nav3 } from ".";
+import Image from "next/image";
+import images from "../Images/index";
 export default () => {
   const [state, setState] = useState(false);
   const { currentUser, connectWallet } = useContext(TrackingContext);
@@ -35,12 +37,11 @@ export default () => {
           href="#" 
           onClick={(e) => e.preventDefault()}
           >
-            <img
-              src="https://www.floatui.com/logo.svg"
-              width={120}
-              height={50}
-              alt="Float UI logo"
-            />
+            <Image
+                className="w-28"
+                src={images.logo}
+                alt="Logo"
+              />
           </a>
           <div className="md:hidden">
             <button
