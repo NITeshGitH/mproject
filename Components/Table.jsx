@@ -20,8 +20,9 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
             Create Tracking
           </h3>
           <p className="text-gray-600 mt-2">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perferendis quibusdam laboriosam aspernatur. Blanditiis, officia repellat vero optio ducimus hic nam, qui incidunt perspiciatis modi quia, voluptatem delectus suscipit iste voluptatum.
-          </p>
+          Easily track your shipments in real time using our blockchain-powered platform. 
+            Add new tracking entries, monitor delivery progress, and ensure transparency and 
+            security across your supply chain.</p>
         </div>
         <div className="mt-3 md:mt-0">
           <button
