@@ -3,13 +3,17 @@ import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 
 //INTERNAL IMPORT 
-import tracking from "../Conetxt/Tracking.json";
-const ContractAddress = "0x5fbdb2315678afecb367f032d93f642f64180aa3";
-const ContractABI = tracking.abi;
+//INTERNAL IMPORT 
+import ContractABI from "./Tracking.json";  // Import the ABI array directly
+const ContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 //--FETCHING SMART CONTRACT
-const fetchContract = (signerOrProvider) =>
-    new ethers.Contract(ContractAddress, ContractABI, signerOrProvider);
+const fetchContract = (signerOrProvider) => {
+    if (!ContractABI || !Array.isArray(ContractABI)) {
+        throw new Error("Contract ABI is not properly loaded");
+    }
+    return new ethers.Contract(ContractAddress, ContractABI, signerOrProvider);
+};
 
 export const TrackingContext = React.createContext();
 

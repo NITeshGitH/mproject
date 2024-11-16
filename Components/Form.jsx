@@ -12,22 +12,22 @@ export default ({
     price: "",
   });
 
-  // const createItem = async () => {
-  //   try {
-  //     await createShipment(shipment);
-  //   } catch (error) {
-  //     console.log("Error creating shipment item");
-  //   }
-  // };
   const createItem = async () => {
     try {
-      console.log("Shipment Data:", shipment); // Debugging
-      const response = await createShipment(shipment);
-      console.log("Server Response:", response);
+      await createShipment(shipment);
     } catch (error) {
-      console.error("Error creating shipment item:", error);
+      console.log("Error creating shipment item");
     }
   };
+  // const createItem = async () => {
+  //   try {
+  //     console.log("Shipment Data:", shipment); // Debugging
+  //     const response = await createShipment(shipment);
+  //     console.log("Server Response:", response);
+  //   } catch (error) {
+  //     console.error("Error creating shipment item:", error);
+  //   }
+  // };
   
 
   return createShipmentModel ? (

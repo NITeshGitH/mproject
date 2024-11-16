@@ -12,9 +12,6 @@ contract Tracking {
         uint256 price;
         ShipmentStatus status;
         bool isPaid;
-        int16 temperature; // in Celsius
-        uint16 humidity;    // in percentage
-        string location;    // location details for tracking
 
     }
 
@@ -30,9 +27,6 @@ contract Tracking {
         uint256 price;
         ShipmentStatus status;
         bool isPaid;
-        int16 temperature; // in Celsius
-        uint16 humidity;    // in percentage
-        string location;    // location details for tracking
     }
 
     TypeShipment[] public typeShipments;
@@ -42,7 +36,6 @@ contract Tracking {
     event ShipmentInTransit(address indexed sender, address indexed receiver, uint256 pickupTime);
     event ShipmentDelivered(address indexed sender,  address indexed receiver, uint256 deliveryTime);
     event ShipmentPaid(address indexed sender, address indexed receiver, uint256 amount);
-    event DataRecorded(uint256 indexed dataId, int16 temperature, uint16 humidity, string location);
     event Alert(string message, uint256 indexed dataId, int16 temperature, uint16 humidity);
 
     constructor() {
@@ -60,10 +53,7 @@ contract Tracking {
             _distance, 
             _price, 
             ShipmentStatus.PENDING, 
-            false,
-            0, // initial temperature
-            0, // initial humidity
-            "" // initial location
+            false
         );
 
         shipments[msg.sender].push(shipment);
@@ -78,39 +68,13 @@ contract Tracking {
                 _distance,
                 _price,
                 ShipmentStatus.PENDING,
-                false,
-                0, // initial temperature
-                0, // initial humidity
-                "" // initial location
+                false
             )
         );
 
         emit ShipmentCreated(msg.sender, _receiver, _pickupTime, _distance, _price);
     }
 
-    // Function to record IoT data during shipment
-    function recordData(uint256 _shipmentIndex, int16 _temperature, uint16 _humidity, string memory _location) public {
-        Shipment storage shipment = shipments[msg.sender][_shipmentIndex];
-        TypeShipment storage typeShipment = typeShipments[_shipmentIndex];
-
-        shipment.temperature = _temperature;
-        shipment.humidity = _humidity;
-        shipment.location = _location;
-        typeShipment.temperature = _temperature;
-        typeShipment.humidity = _humidity;
-        typeShipment.location = _location;
-
-        emit DataRecorded(_shipmentIndex, _temperature, _humidity, _location);
-
-        // Check for threshold violations (example: temperature for RBC should be 4°C)
-        if (_temperature < 2 || _temperature > 6) {
-            emit Alert("Temperature out of range!", _shipmentIndex, _temperature, _humidity);
-        }
-
-        if (_humidity < 30 || _humidity > 60) { // Example humidity range
-            emit Alert("Humidity out of range!", _shipmentIndex, _temperature, _humidity);
-        }
-    }
     
     function startShipment(address _sender, address _receiver, uint256 _index) public {
         Shipment storage shipment = shipments[_sender][_index];
@@ -134,8 +98,8 @@ contract Tracking {
         require(!shipment.isPaid, "Shipment already paid.");
 
         shipment.status = ShipmentStatus.DELIVERED;
-         typeShipment.status = ShipmentStatus.DELIVERED;
-         typeShipment.deliveryTime = block.timestamp;
+        typeShipment.status = ShipmentStatus.DELIVERED;
+        typeShipment.deliveryTime = block.timestamp;
         shipment.deliveryTime = block.timestamp;
 
         uint256 amount = shipment.price;

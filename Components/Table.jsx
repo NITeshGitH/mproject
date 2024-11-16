@@ -20,20 +20,21 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
             Create Tracking
           </h3>
           <p className="text-gray-600 mt-2">
-          Easily track your shipments in real time using our blockchain-powered platform. 
-            Add new tracking entries, monitor delivery progress, and ensure transparency and 
+            Easily track your shipments in real time using our blockchain-powered platform.
+            Add new tracking entries, monitor delivery progress, and ensure transparency and
             security across your supply chain.</p>
         </div>
         <div className="mt-3 md:mt-0">
           <button
-          onClick={() => setCreateShipmentModel(true)}
-          className="inline-block px-4 py-2 text-white duration-150 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 md:text-sm rounded-lg
+            onClick={() => setCreateShipmentModel(true)}
+            className="inline-block px-4 py-2 text-white duration-150 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 md:text-sm rounded-lg
           md:inline-flex"
           >
             Add Tracking
           </button>
         </div>
       </div>
+
       <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
         <table className="w-full table-auto text-sm text-left">
           <thead className="bg-gray-50 text-gray-600 font-medium border-b">
@@ -52,7 +53,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
             {allShipmentsdata?.map((shipment, idx) => (
               <tr key={idx}>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {shipment.sender.slice(0,15)}...
+                  {shipment.sender.slice(0, 15)}...
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {shipment.receiver.slice(0, 15)}...
@@ -74,10 +75,10 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {shipment.status == 0
-                  ? "Pending"
-                  : shipment.status == 1
-                  ? "IN_TRANSIT"
-                  : "Delivered"}
+                    ? "Pending"
+                    : shipment.status == 1
+                      ? "IN_TRANSIT"
+                      : "Delivered"}
                 </td>
               </tr>
             ))
