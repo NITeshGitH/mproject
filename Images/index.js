@@ -5,6 +5,7 @@ import startShipment from "./4.jpg";
 import userProfile from "./5.jpg";
 import send from "./6.jpg";
 import avatar from "./creator9.png";
+import logo from "./logo.jpg";
 
 export default {
   shipCount,
@@ -14,4 +15,5 @@ export default {
   userProfile,
   send,
   avatar,
+  logo,
 };
