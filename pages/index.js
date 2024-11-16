@@ -25,7 +25,7 @@ const index = () => {
 
   // STATE VARIABLE
   const [createShipmentModel, setCreateShipmentModel] = useState(false);
-  const [openProfile, setOpenprofile] = useState(false);
+  const [openProfile, setOpenProfile] = useState(false);
   const [startModel, setStartModel] = useState(false);
   const [completeModel, setCompleteModel] = useState(false);
   const [getModel, setGetModel] = useState(false);
@@ -42,7 +42,7 @@ const index = () => {
   return (
     <>
       <Services
-        setOpenprofile = {setOpenprofile}
+        setOpenProfile = {setOpenProfile}
         setCompleteModel = {setCompleteModel}
         setGetModel={setGetModel}
         setStartModel={setStartModel}
@@ -58,7 +58,7 @@ const index = () => {
         />
         <Profile
           openProfile={openProfile}
-          setOpenprofile={setOpenprofile}
+          setOpenProfile={setOpenProfile}
           currentUser={currentUser}
           getShipmentsCount={getShipmentsCount}
         />
