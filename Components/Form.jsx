@@ -14,20 +14,13 @@ export default ({
 
   const createItem = async () => {
     try {
-      await createShipment(shipment);
+      console.log("Shipment Data:", shipment); // Debugging
+      const response = await createShipment(shipment);
+      console.log("Server Response:", response);
     } catch (error) {
-      console.log("Error creating shipment item");
+      console.error("Error creating shipment item:", error);
     }
   };
-  // const createItem = async () => {
-  //   try {
-  //     console.log("Shipment Data:", shipment); // Debugging
-  //     const response = await createShipment(shipment);
-  //     console.log("Server Response:", response);
-  //   } catch (error) {
-  //     console.error("Error creating shipment item:", error);
-  //   }
-  // };
   
 
   return createShipmentModel ? (

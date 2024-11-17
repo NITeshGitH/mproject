@@ -75,7 +75,7 @@ const index = () => {
         <StartShipment
           startModel={startModel}
           setStartModel={setStartModel}
-          StartShipment={startShipment}
+          startShipment={startShipment}
         />
     </>
   );

@@ -29,14 +29,13 @@ contract Tracking {
         bool isPaid;
     }
 
-    TypeShipment[] public typeShipments;
+    TypeShipment[] typeShipments;
 
 
     event ShipmentCreated( address indexed sender, address indexed receiver, uint256 pickupTime, uint256 distance, uint256 price);
     event ShipmentInTransit(address indexed sender, address indexed receiver, uint256 pickupTime);
     event ShipmentDelivered(address indexed sender,  address indexed receiver, uint256 deliveryTime);
     event ShipmentPaid(address indexed sender, address indexed receiver, uint256 amount);
-    event Alert(string message, uint256 indexed dataId, int16 temperature, uint16 humidity);
 
     constructor() {
         shipmentCount = 0;

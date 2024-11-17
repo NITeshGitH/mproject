@@ -3,8 +3,8 @@ import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 
 //INTERNAL IMPORT 
-//INTERNAL IMPORT 
-import ContractABI from "./Tracking.json";  // Import the ABI array directly
+import Tracking from "./Tracking.json"; // Import the entire JSON
+const ContractABI = Tracking.abi;      // Extract only the ABI array
 const ContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 
 //--FETCHING SMART CONTRACT
@@ -43,6 +43,9 @@ export const TrackingProvider = ({ children }) => {
             );
             await createItem.wait();
             console.log(createItem);
+            // Fetch updated shipments
+            const updatedShipments = await getAllShipment();
+            setAllShipmentsData(updatedShipments);
         } catch (error){
             console.log("Some went wrong", error);
         }
