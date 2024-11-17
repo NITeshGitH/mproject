@@ -5,13 +5,6 @@ import images from "../Images/index";
 export default ({ openProfile , setOpenProfile , currentUser , getShipmentsCount}) => {
   const [ count, setCount ] = useState(0);
 
-  // useEffect(() => {
-  //   const getShipmentsData = getShipmentsCount();
-  //   return async() => {
-  //     const allData = await getShipmentsData;
-  //     setCount(allData);
-  //   };
-  // }, []);
   useEffect(() => {  
     const fetchShipmentsData = async () => {  
       try {  

@@ -1,6 +1,15 @@
 export default ({ setCreateShipmentModel, allShipmentsdata }) => {
   const coverTime = (time) => {
-    const newTime = new Date(time);
+    if (!time || time === 0) {
+      return "Not set";
+    }
+    const timestamp = time.toString().length > 10 ? time : time * 1000;
+    const newTime = new Date(timestamp);
+
+    if (isNaN(newTime.getTime())) {
+      return "Invalid date";
+    }
+    
     const dataTime = new Intl.DateTimeFormat("en-US", {
       year: "numeric",
       month: "2-digit",
@@ -68,7 +77,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                   {shipment.price}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  {shipment.deliveryTime}
+                  {coverTime(shipment.deliveryTime)}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {shipment.isPaid ? " Completed" : "Not Complete"}

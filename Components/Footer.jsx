@@ -5,19 +5,19 @@ import images from "../Images/index";
 export default () => {
   const footerNavs = [
     {
-      href: "javascript:void()",
+      href: "/terms",
       name: "Terms",
     },
     {
-      href: "javascript:void()",
+      href: "/license",
       name: "License",
     },
     {
-      href: "javascript:void()",
+      href: "/privacy",
       name: "Privacy",
     },
     {
-      href: "javascript:void()",
+      href: "/about-us",
       name: "About us",
     },
   ];
