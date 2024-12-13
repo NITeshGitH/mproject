@@ -8,6 +8,7 @@ import {
   CompleteShipment,
   GetShipment,
   StartShipment,
+  SendMessage,
 } from '../Components';
 import ShipCount from '../Components/ShipCount';
 
@@ -30,6 +31,7 @@ const index = () => {
   const [startModel, setStartModel] = useState(false);
   const [completeModel, setCompleteModel] = useState(false);
   const [getModel, setGetModel] = useState(false);
+  const [openSendMessage, setOpenSendMessage] = useState(false);
   //DATA STATE VARIABLE
   const [allShipmentsdata, setallShipmentsdata] = useState();
   const [shipCount, setShipCount] = useState(false);
@@ -49,6 +51,7 @@ const index = () => {
         setGetModel={setGetModel}
         setStartModel={setStartModel}
         setShipCount={setShipCount}
+        setOpenSendMessage={setOpenSendMessage}
       />
       <Table
         setCreateShipmentModel={setCreateShipmentModel}
@@ -85,6 +88,12 @@ const index = () => {
         setShipCount={setShipCount}
         getShipmentsCount={getShipmentsCount}
       />
+      {openSendMessage && (
+        <SendMessage
+          openSendMessage={openSendMessage}
+          setOpenSendMessage={setOpenSendMessage}
+        />
+      )}
     </>
   );
 };

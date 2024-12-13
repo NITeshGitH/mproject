@@ -4,19 +4,28 @@ import images from "../Images/index";
 
 export default ({ openProfile , setOpenProfile , currentUser , getShipmentsCount}) => {
   const [ count, setCount ] = useState(0);
+  const [ balance, setBalance ] = useState(0);
 
   useEffect(() => {  
-    const fetchShipmentsData = async () => {  
+    const fetchData = async () => {  
       try {  
-        const allData = await getShipmentsCount();  
-        setCount(allData);  
+        const [shipmentsData, balanceData] = await Promise.all([  
+          getShipmentsCount(),  
+          window.ethereum.request({  
+            method: 'eth_getBalance',  
+            params: [currentUser, 'latest']  
+          })  
+        ]);  
+        
+        setCount(shipmentsData);  
+        setBalance((parseInt(balanceData) / 1e18).toFixed(4));  
       } catch (error) {  
-        console.error("Error fetching shipments data:", error);  
+        console.error("Error fetching data:", error);  
       }  
     };   
   
-    fetchShipmentsData();  
-  }, [getShipmentsCount]);
+    fetchData();  
+  }, [getShipmentsCount, currentUser]);
 
   return openProfile ? (
     <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -62,7 +71,7 @@ export default ({ openProfile , setOpenProfile , currentUser , getShipmentsCount
                   href="#"
                   className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-black rounded-lg border-2"
                 >
-                  Balance: 34 ETH
+                  Balance: {balance} ETH
                 </a>
                 <a
                   href="#"

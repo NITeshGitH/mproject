@@ -7,6 +7,7 @@ export default ({
   setGetModel,
   setStartModel,
   setShipCount,
+  setOpenSendMessage
 }) => {
   const team = [
     {
@@ -40,6 +41,8 @@ export default ({
       setOpenProfile(true);
     } else if (text === 5) {
       setShipCount(true);
+    } else if (text === 6) {
+      setOpenSendMessage(true);
     }
   };
 

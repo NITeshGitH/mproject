@@ -48,6 +48,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
         <table className="w-full table-auto text-sm text-left">
           <thead className="bg-gray-50 text-gray-600 font-medium border-b">
             <tr>
+              <th className="py-3 px-6">ID</th>
               <th className="py-3 px-6">Sender</th>
               <th className="py-3 px-6">Receiver</th>
               <th className="py-3 px-6">PickUpTime</th>
@@ -61,6 +62,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
           <tbody className="text-gray-600 divide-y">
             {allShipmentsdata?.map((shipment, idx) => (
               <tr key={idx}>
+                <td className="px-6 py-4 whitespace-nowrap">{shipment.id}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   {shipment.sender.slice(0, 15)}...
                 </td>

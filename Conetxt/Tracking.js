@@ -55,9 +55,10 @@ export const TrackingProvider = ({ children }) => {
         try {
             const provider = new ethers.providers.JsonRpcProvider();
             const contract = fetchContract(provider);
-
+    
             const shipments = await contract.getAllTransactions();
-            const allShipments = shipments.map((shipment) => ({
+            const allShipments = shipments.map((shipment, index) => ({
+                id: index, // Assuming you want a simple incremental ID
                 sender: shipment.sender,
                 receiver: shipment.receiver,
                 price: ethers.utils.formatEther(shipment.price.toString()),
@@ -66,12 +67,12 @@ export const TrackingProvider = ({ children }) => {
                 distance: shipment.distance.toNumber(),
                 isPaid: shipment.isPaid,
                 status: shipment.status
-
             }));
-
+    
             return allShipments;
-        }catch (error) {
-            console.log("error want, getting shipment");
+        } catch (error) {
+            console.error("Error fetching all shipments:", error);
+            return [];
         }
     };
 
