@@ -7,7 +7,7 @@ import GetDrugDetails from '../Components/GetDrugDetails';
 import LoadingSpinner from '../Components/LoadingSpinner';
 
 const PharmaPage = () => {
-    const { addDrug, getDrugDetails, isLoading } = useContext(PharmaContext);
+    const { addMedicine, getMedicineDetails, isLoading } = useContext(PharmaContext);
     const [drugData, setDrugData] = useState({
         batchNumber: '',
         name: '',
@@ -17,8 +17,8 @@ const PharmaPage = () => {
     });
 
     const [selectedBatchNumber, setSelectedBatchNumber] = useState('');
-    const [drugDetails, setDrugDetails] = useState(null);
-    const [activeTab, setActiveTab] = useState('addDrug'); // ['addDrug', 'details', 'environmental', 'status', 'getDetails']
+    const [medicineDetails, setDrugDetails] = useState(null);
+    const [activeTab, setActiveTab] = useState('addMedicine'); // ['addMedicine', 'details', 'environmental', 'status', 'getDetails']
 
     useEffect(() => {
         if (selectedBatchNumber) {
@@ -46,9 +46,9 @@ const PharmaPage = () => {
                 expiryDate: expDate
             };
 
-            addDrug(drugDataWithTimestamps);
+            addMedicine(drugDataWithTimestamps);
             setSelectedBatchNumber(drugData.batchNumber);
-            setActiveTab('drugDetails');
+            setActiveTab('medicineDetails');
             setDrugData({
                 batchNumber: '',
                 name: '',
@@ -66,7 +66,7 @@ const PharmaPage = () => {
     const fetchDrugDetails = async () => {
         if (!selectedBatchNumber) return;
         try {
-            const details = await getDrugDetails(selectedBatchNumber);
+            const details = await getMedicineDetails(selectedBatchNumber);
             setDrugDetails(details);
         } catch (error) {
             console.error("Error fetching drug details:", error);
@@ -82,7 +82,7 @@ const PharmaPage = () => {
                 </div>
             )}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <h2 className="text-3xl font-bold text-gray-900 mb-8">Pharmaceutical Supply Chain Management</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-8">Medical Supply Chain Management</h2>
                 
                 {/* Batch Number Search */}
                 <div className="mt-4 flex items-start justify-between md:flex-row space-x-4">
@@ -104,7 +104,7 @@ const PharmaPage = () => {
                 {/* Tab Navigation */}
                 <div className="border-b border-gray-200 mb-8">
                     <nav className="flex flex-wrap space-x-4">
-                        {['addDrug', 'drugDetails', 'environmentalControls', 'statusManagement', 'getDrugDetails'].map((tab) => (
+                        {['addMedicine', 'medicineDetails', 'environmentalControls', 'statusManagement', 'getMedicineDetails'].map((tab) => (
                             <button
                                 key={tab}
                                 className={`whitespace-nowrap py-4 px-1 border-b-2 font-medium ${activeTab === tab ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}
@@ -118,9 +118,9 @@ const PharmaPage = () => {
 
                 {/* Tab Content */}
                 <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-                    {activeTab === 'addDrug' && (
+                    {activeTab === 'addMedicine' && (
                         <form onSubmit={handleAddDrug} className="space-y-4">
-                            <h3 className="text-xl font-semibold">Add New Drug</h3>
+                            <h3 className="text-xl font-semibold">Add New Medicine</h3>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Batch Number</label>
                                 <input
@@ -175,12 +175,12 @@ const PharmaPage = () => {
                                 type="submit"
                                 className="w-full bg-indigo-600 text-white py-2 px-4 rounded-md hover:bg-indigo-700"
                             >
-                                Add Drug
+                                Add Medicine
                             </button>
                         </form>
                     )}
 
-                    {activeTab === 'drugDetails' && selectedBatchNumber && (
+                    {activeTab === 'medicineDetails' && selectedBatchNumber && (
                         <DrugDetailsForm batchNumber={selectedBatchNumber} />
                     )}
 
@@ -192,13 +192,13 @@ const PharmaPage = () => {
                         <DrugStatusManager batchNumber={selectedBatchNumber} />
                     )}
 
-                    {activeTab === 'getDrugDetails' && selectedBatchNumber && (
+                    {activeTab === 'getMedicineDetails' && selectedBatchNumber && (
                         <GetDrugDetails batchNumber={selectedBatchNumber} />
                     )}
 
-                    {!selectedBatchNumber && activeTab !== 'addDrug' && (
+                    {!selectedBatchNumber && activeTab !== 'addMedicine' && (
                         <div className="text-center text-gray-500">
-                            Please enter a batch number to manage drug details
+                            Please enter a batch number to manage medicine details
                         </div>
                     )}
                 </div>

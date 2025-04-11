@@ -244,7 +244,7 @@ contract PharmaSupplyChain {
         );
     }
 
-    function getDrugDetails(string memory batchNumber)
+    function getMedicineDetails(string memory batchNumber)
         public
         view
         returns (

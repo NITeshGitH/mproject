@@ -23,7 +23,7 @@ export const PharmaProvider = ({ children }) => {
     const [isConnected, setIsConnected] = useState(false);
     const [chainId, setChainId] = useState(null);
 
-    const addDrug = async (drugData) => {
+    const addMedicine = async (drugData) => {
         if (isLoading) return;
         setIsLoading(true);
         setError(null);
@@ -90,12 +90,12 @@ export const PharmaProvider = ({ children }) => {
         }
     };
 
-    const getDrugDetails = async (batchNumber) => {
+    const getMedicineDetails = async (batchNumber) => {
         try {
             const provider = new ethers.providers.JsonRpcProvider();
             const contract = fetchContract(provider);
             const baseDetails = await contract.getDrugBase(batchNumber);
-            const details = await contract.getDrugDetails(batchNumber);
+            const details = await contract.getMedicineDetails(batchNumber);
             const status = await contract.getDrugStatus(batchNumber);
             const environmental = await contract.getDrugEnvironmental(batchNumber);
 
@@ -326,11 +326,11 @@ export const PharmaProvider = ({ children }) => {
                 currentUser,
                 isLoading,
                 error,
-                addDrug,
+                addMedicine,
                 addDrugDetails,
                 updateEnvironmentalData,
                 setEnvironmentalLimits,
-                getDrugDetails,
+                getMedicineDetails,
                 transferOwnership,
                 verifyDrug,
                 updateStatus,

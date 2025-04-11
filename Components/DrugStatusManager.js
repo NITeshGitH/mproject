@@ -105,13 +105,13 @@ const DrugStatusManager = ({ batchNumber, onUpdate }) => {
                     onClick={handleVerify}
                     className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700"
                 >
-                    Verify Drug
+                    Verify Medicine
                 </button>
             </div>
 
             {/* Recall Drug */}
             <form onSubmit={handleRecall} className="space-y-4 mb-8">
-                <h3 className="text-xl font-semibold">Recall Drug</h3>
+                <h3 className="text-xl font-semibold">Recall Medicine</h3>
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Recall Reason</label>
                     <textarea
@@ -125,7 +125,7 @@ const DrugStatusManager = ({ batchNumber, onUpdate }) => {
                     type="submit"
                     className="w-full bg-red-600 text-white py-2 px-4 rounded-md hover:bg-red-700"
                 >
-                    Recall Drug
+                    Recall Medicine
                 </button>
             </form>
 

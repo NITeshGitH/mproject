@@ -35,7 +35,7 @@ const DrugDetailsForm = ({ batchNumber }) => {
     return (
         <div className="max-w-lg mx-auto mt-8">
             <form onSubmit={handleSubmit} className="space-y-4">
-            <h3 className="text-xl font-semibold">Add Drug Details</h3>
+            <h3 className="text-xl font-semibold">Add Medicine Details</h3>
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Dosage Form</label>
                     <input

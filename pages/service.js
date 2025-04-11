@@ -15,8 +15,8 @@ const Service = () => {
       description: "End-to-end supply chain visibility and management"
     },
     {
-      title: "Pharmaceutical Tracking",
-      description: "Secure and transparent tracking of pharmaceutical products with environmental monitoring"
+      title: "Medical Tracking",
+      description: "Secure and transparent tracking of Medical products with environmental monitoring"
     }
   ];
 
